@@ -1,7 +1,7 @@
 <template>
   <div class="page-article" v-if="model">
     <div class="d-flex py-2 border-bottom ai-center">
-      <div class="text-blue icon-Back">&lt;</div>
+      <div class="text-blue icon-Back" @click="back">&lt;</div>
       <strong class="flex-1 fs-lg text-ellipsis px-2 py-1 text-blue">
         {{model.title}}
       </strong>
@@ -48,6 +48,9 @@ export default {
       const res = await this.$http.get(`articles/${this.id}`)
       this.model = res.data
       console.log(this.model);
+    },
+    back() {
+      this.$router.go(-1)
     }
   }
 }
